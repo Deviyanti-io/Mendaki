@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pesan Sekarang - Summit Adventures</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #2c5530;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #2c5530;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #2c5530;
+      transition: width 0.3s ease;
+    }
+
+    .form-section {
+      padding: 8rem 2rem 4rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 600px;
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      color: #2c5530;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      color: #2c5530;
+      margin-bottom: 0.5rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #2c5530;
+      box-shadow: 0 0 0 3px rgba(44, 85, 48, 0.1);
+    }
+
+    .btn {
+      width: 100%;
+      background: linear-gradient(135deg, #2c5530, #3a7040);
+      color: white;
+      border: none;
+      padding: 14px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(44, 85, 48, 0.4);
+    }
+
+    .footer {
+      background: rgba(44, 85, 48, 0.95);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .form-container h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="asset/logomendaki.png" alt="Logo" style="height: 60px; vertical-align: middle;">
+        <span style="margin-left: 8px;">Summit Adventures</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="home.html">Beranda</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="gunung.html">Gunung</a></li>
+        <li><a href="paket.html">Paket</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Form Section -->
+  <section class="form-section">
+    <div class="form-container">
+      <h2>📝 Pesan Sekarang</h2>
+     <form action="proses_pesan.php" method="POST">
+        <div class="form-group">
+          <label for="nama">Nama Lengkap</label>
+          <input type="text" id="nama" name="nama" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="telepon">Nomor Telepon</label>
+          <input type="tel" id="telepon" name="telepon" required />
+        </div>
+
+        <div class="form-group">
+          <label for="paket">Pilih Paket</label>
+          <select id="paket" name="paket" required>
+            <option value="">-- Pilih Paket Pendakian --</option>
+            <option value="rinjani">Ekspedisi Rinjani</option>
+            <option value="bromo">Sunrise Bromo</option>
+            <option value="merbabu">Jelajah Merbabu</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="jumlah">Jumlah Orang</label>
+          <input type="number" id="jumlah" name="jumlah" min="1" required />
+        </div>
+
+        <div class="form-group">
+          <label for="tanggal">Tanggal Pendakian</label>
+          <input type="date" id="tanggal" name="tanggal" required />
+        </div>
+
+        <div class="form-group">
+          <label for="catatan">Catatan Tambahan</label>
+          <textarea id="catatan" name="catatan" rows="4" placeholder="Tulis permintaan khusus atau info tambahan..."></textarea>
+        </div>
+
+        <button type="submit" class="btn">Pembayaran</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Summit Adventures. Semua hak dilindungi. Dibuat dengan ❤️ untuk para petualang Indonesia.</p>
+    </div>
+  </footer>
+
+  <!-- Auto-set paket dari URL -->
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const paket = urlParams.get('paket');
+    if (paket) {
+      const select = document.getElementById('paket');
+      for (const option of select.options) {
+        if (option.text === paket) {
+          option.selected = true;
+          break;
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

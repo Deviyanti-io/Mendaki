@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendakian Nusantara - Portal Mendaki Indonesia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+            body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url(asset/gunung1.jpg) no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            color: #333;
+    }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c5530;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            color: #2c5530;
+        }
+
+        .tab-btn.active {
+            background: #2c5530;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(44, 85, 48, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c5530;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #2c5530;
+            box-shadow: 0 0 0 3px rgba(44, 85, 48, 0.1);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #2c5530, #3a7040);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(44, 85, 48, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+        }
+
+        .btn-edit {
+            background: linear-gradient(135deg, #ffc107, #e0a800);
+            color: #333;
+        }
+
+        .mountain-card, .review-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .mountain-card:hover, .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .mountain-name {
+            color: #2c5530;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .mountain-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .info-value {
+            color: #333;
+            margin-top: 5px;
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .difficulty.mudah { background: #d4edda; color: #155724; }
+        .difficulty.sedang { background: #fff3cd; color: #856404; }
+        .difficulty.sulit { background: #f8d7da; color: #721c24; }
+
+        .stars {
+            color: #ffc107;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .review-meta {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c5530;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav id="navbar">
+    <div class="nav-container" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;">
+        <a href="index.html" class="logo" style="font-size: 1.8rem; font-weight: bold; color: #2c5530; text-decoration: none;">
+            <img src="asset/logomendaki.png" alt="Summit Adventures Logo" style="height: 60px; vertical-align: middle;">
+            <span style="margin-left: 8px;">Summit Adventures</span>
+        </a>
+        <ul class="nav-links" style="display: flex; list-style: none; gap: 2rem;">
+            <li><a href="home.html" style="color: #2c5530; text-decoration: none; font-weight: 500;">Beranda</a></li>
+            <li><a href="tentang.html" style="color: #2c5530; text-decoration: none; font-weight: 500;">Tentang</a></li>
+            <li><a href="gunung.html" style="color: #2c5530; text-decoration: none; font-weight: 500;">Gunung</a></li>
+            <li><a href="paket.html" style="color: #2c5530; text-decoration: none; font-weight: 500;">Paket</a></li>
+            <li><a href="kontak.html" style="color: #2c5530; text-decoration: none; font-weight: 500;">Kontak</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Tambahkan margin-top agar konten tidak tertutup navbar -->
+<div style="height: 100px;"></div>
+
+    <div class="container">
+        <header>
+            <h1>Pendakian Nusantara</h1>
+            <p class="subtitle">Portal Informasi Mendaki Gunung Indonesia</p>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalMountains">0</div>
+                    <div class="stat-label">Total Gunung</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalReviews">0</div>
+                    <div class="stat-label">Total Review</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avgRating">0</div>
+                    <div class="stat-label">Rating Rata-rata</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('mountains')">📍 Daftar Gunung</button>
+            <button class="tab-btn" onclick="showTab('add-mountain')">➕ Tambah Gunung</button>
+            <button class="tab-btn" onclick="showTab('reviews')">⭐ Review Pendaki</button>
+            <button class="tab-btn" onclick="showTab('add-review')">✍️ Tulis Review</button>
+        </div>
+
+        <!-- Tab Daftar Gunung -->
+        <div id="mountains" class="tab-content active">
+            <h2>📍 Daftar Gunung Pendakian</h2>
+            <div id="mountainsList"></div>
+        </div>
+
+        <!-- Tab Tambah Gunung -->
+        <div id="add-mountain" class="tab-content">
+            <h2>➕ Tambah Jalur Pendakian Baru</h2>
+            <form id="mountainForm">
+                <div class="form-group">
+                    <label for="mountainName">Nama Gunung</label>
+                    <input type="text" id="mountainName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="location">Lokasi</label>
+                    <input type="text" id="location" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="difficulty">Tingkat Kesulitan</label>
+                    <select id="difficulty" required>
+                        <option value="">Pilih tingkat kesulitan</option>
+                        <option value="mudah">Mudah</option>
+                        <option value="sedang">Sedang</option>
+                        <option value="sulit">Sulit</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="duration">Estimasi Waktu (hari)</label>
+                    <input type="number" id="duration" min="1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cost">Biaya (Rp)</label>
+                    <input type="number" id="cost" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="altitude">Ketinggian (mdpl)</label>
+                    <input type="number" id="altitude" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Deskripsi Jalur</label>
+                    <textarea id="description" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Tambah Gunung</button>
+                <button type="button" class="btn" id="cancelEdit" onclick="cancelEdit()" style="display: none;">Batal</button>
+            </form>
+        </div>
+
+        <!-- Tab Review -->
+        <div id="reviews" class="tab-content">
+            <h2>⭐ Review & Testimoni Pendaki</h2>
+            <div id="reviewsList"></div>
+        </div>
+
+        <!-- Tab Tambah Review -->
+        <div id="add-review" class="tab-content">
+            <h2>✍️ Tulis Review Pendakian</h2>
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label for="reviewMountain">Pilih Gunung</label>
+                    <select id="reviewMountain" required>
+                        <option value="">Pilih gunung yang didaki</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reviewerName">Nama Pendaki</label>
+                    <input type="text" id="reviewerName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rating">Rating (1-5)</label>
+                    <select id="rating" required>
+                        <option value="">Pilih rating</option>
+                        <option value="1">⭐ (1) - Sangat Buruk</option>
+                        <option value="2">⭐⭐ (2) - Buruk</option>
+                        <option value="3">⭐⭐⭐ (3) - Cukup</option>
+                        <option value="4">⭐⭐⭐⭐ (4) - Baik</option>
+                        <option value="5">⭐⭐⭐⭐⭐ (5) - Sangat Baik</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">Pengalaman & Review</label>
+                    <textarea id="experience" rows="5" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tips">Tips untuk Pendaki Lain</label>
+                    <textarea id="tips" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Posting Review</button>
+                <button type="button" class="btn" id="cancelReviewEdit" onclick="cancelReviewEdit()" style="display: none;">Batal</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Delete -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDeleteModal()">&times;</span>
+            <h3>Konfirmasi Hapus</h3>
+            <p id="deleteMessage"></p>
+            <button class="btn btn-danger" id="confirmDelete">Ya, Hapus</button>
+            <button class="btn" onclick="closeDeleteModal()">Batal</button>
+        </div>
+    </div>
+
+    <script>
+        // Data Storage (XML-like structure in JavaScript objects)
+        let mountainsData = [];
+        let reviewsData = [];
+        let editingMountainId = null;
+        let editingReviewId = null;
+
+        // Initialize with sample data
+        function initializeData() {
+            mountainsData = [
+                {
+                    id: 1,
+                    name: "Gunung Rinjani",
+                    location: "Lombok, Nusa Tenggara Barat",
+                    difficulty: "sulit",
+                    duration: 3,
+                    cost: 1200000,
+                    altitude: 3726,
+                    description: "Gunung tertinggi kedua di Indonesia dengan pemandangan Danau Segara Anak yang menakjubkan."
+                },
+                {
+                    id: 2,
+                    name: "Gunung Bromo",
+                    location: "Jawa Timur",
+                    difficulty: "mudah",
+                    duration: 1,
+                    cost: 150000,
+                    altitude: 2329,
+                    description: "Gunung berapi aktif dengan sunrise yang spektakuler di kawasan Tengger Semeru."
+                }
+            ];
+
+            reviewsData = [
+                {
+                    id: 1,
+                    mountainId: 1,
+                    mountainName: "Gunung Rinjani",
+                    reviewerName: "Ahmad Surya",
+                    rating: 5,
+                    experience: "Pendakian yang sangat menantang tapi worth it banget! Pemandangan Danau Segara Anak benar-benar memukau.",
+                    tips: "Bawa jaket tebal, suhu di puncak sangat dingin. Persiapan fisik minimal 2 bulan sebelum pendakian.",
+                    date: "2024-12-15"
+                }
+            ];
+        }
+
+        // Generate XML representation
+        function generateXML() {
+            let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+            xml += '<pendakian_data>\n';
+            
+            // Mountains XML
+            xml += '  <gunung_list>\n';
+            mountainsData.forEach(mountain => {
+                xml += `    <gunung id="${mountain.id}">\n`;
+                xml += `      <nama>${mountain.name}</nama>\n`;
+                xml += `      <lokasi>${mountain.location}</lokasi>\n`;
+                xml += `      <kesulitan>${mountain.difficulty}</kesulitan>\n`;
+                xml += `      <durasi>${mountain.duration}</durasi>\n`;
+                xml += `      <biaya>${mountain.cost}</biaya>\n`;
+                xml += `      <ketinggian>${mountain.altitude}</ketinggian>\n`;
+                xml += `      <deskripsi>${mountain.description}</deskripsi>\n`;
+                xml += `    </gunung>\n`;
+            });
+            xml += '  </gunung_list>\n';
+            
+            // Reviews XML
+            xml += '  <review_list>\n';
+            reviewsData.forEach(review => {
+                xml += `    <review id="${review.id}">\n`;
+                xml += `      <gunung_id>${review.mountainId}</gunung_id>\n`;
+                xml += `      <nama_gunung>${review.mountainName}</nama_gunung>\n`;
+                xml += `      <nama_pendaki>${review.reviewerName}</nama_pendaki>\n`;
+                xml += `      <rating>${review.rating}</rating>\n`;
+                xml += `      <pengalaman>${review.experience}</pengalaman>\n`;
+                xml += `      <tips>${review.tips}</tips>\n`;
+                xml += `      <tanggal>${review.date}</tanggal>\n`;
+                xml += `    </review>\n`;
+            });
+            xml += '  </review_list>\n';
+            xml += '</pendakian_data>';
+            
+            return xml;
+        }
+
+        // Tab Navigation
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Update mountain select for reviews
+            if (tabName === 'add-review') {
+                updateMountainSelect();
+            }
+        }
+
+        // Update statistics
+        function updateStats() {
+            document.getElementById('totalMountains').textContent = mountainsData.length;
+            document.getElementById('totalReviews').textContent = reviewsData.length;
+            
+            const avgRating = reviewsData.length > 0 
+                ? (reviewsData.reduce((sum, review) => sum + review.rating, 0) / reviewsData.length).toFixed(1)
+                : 0;
+            document.getElementById('avgRating').textContent = avgRating;
+        }
+
+        // Mountain Management
+        function addMountain(mountainData) {
+            const newId = mountainsData.length > 0 ? Math.max(...mountainsData.map(m => m.id)) + 1 : 1;
+            mountainsData.push({ id: newId, ...mountainData });
+            renderMountains();
+            updateStats();
+        }
+
+        function updateMountain(id, mountainData) {
+            const index = mountainsData.findIndex(m => m.id === id);
+            if (index !== -1) {
+                mountainsData[index] = { id, ...mountainData };
+                renderMountains();
+                updateStats();
+            }
+        }
+
+        function deleteMountain(id) {
+            mountainsData = mountainsData.filter(m => m.id !== id);
+            reviewsData = reviewsData.filter(r => r.mountainId !== id);
+            renderMountains();
+            renderReviews();
+            updateStats();
+        }
+
+        // Review Management
+        function addReview(reviewData) {
+            const newId = reviewsData.length > 0 ? Math.max(...reviewsData.map(r => r.id)) + 1 : 1;
+            const mountain = mountainsData.find(m => m.id == reviewData.mountainId);
+            reviewsData.push({ 
+                id: newId, 
+                ...reviewData,
+                mountainName: mountain.name,
+                date: new Date().toISOString().split('T')[0]
+            });
+            renderReviews();
+            updateStats();
+        }
+
+        function updateReview(id, reviewData) {
+            const index = reviewsData.findIndex(r => r.id === id);
+            if (index !== -1) {
+                const mountain = mountainsData.find(m => m.id == reviewData.mountainId);
+                reviewsData[index] = { 
+                    id, 
+                    ...reviewData,
+                    mountainName: mountain.name,
+                    date: reviewsData[index].date
+                };
+                renderReviews();
+                updateStats();
+            }
+        }
+
+        function deleteReview(id) {
+            reviewsData = reviewsData.filter(r => r.id !== id);
+            renderReviews();
+            updateStats();
+        }
+
+        // Render Functions
+        function renderMountains() {
+            const container = document.getElementById('mountainsList');
+            
+            if (mountainsData.length === 0) {
+                container.innerHTML = '<div class="empty-state">Belum ada data gunung. Tambahkan gunung pertama Anda!</div>';
+                return;
+            }
+            
+            container.innerHTML = mountainsData.map(mountain => `
+                <div class="mountain-card">
+                    <div class="mountain-name">${mountain.name}</div>
+                    <div class="mountain-info">
+                        <div class="info-item">
+                            <div class="info-label">Lokasi</div>
+                            <div class="info-value">📍 ${mountain.location}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Kesulitan</div>
+                            <div class="info-value">
+                                <span class="difficulty ${mountain.difficulty}">${mountain.difficulty.toUpperCase()}</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Durasi</div>
+                            <div class="info-value">⏱️ ${mountain.duration} hari</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Biaya</div>
+                            <div class="info-value">💰 Rp ${mountain.cost.toLocaleString('id-ID')}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Ketinggian</div>
+                            <div class="info-value">🏔️ ${mountain.altitude.toLocaleString('id-ID')} mdpl</div>
+                        </div>
+                    </div>
+                    <p><strong>Deskripsi:</strong> ${mountain.description}</p>
+                    <div style="margin-top: 15px;">
+                        <button class="btn btn-edit" onclick="editMountain(${mountain.id})">Edit</button>
+                        <button class="btn btn-danger" onclick="confirmDeleteMountain(${mountain.id}, '${mountain.name}')">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderReviews() {
+            const container = document.getElementById('reviewsList');
+            
+            if (reviewsData.length === 0) {
+                container.innerHTML = '<div class="empty-state">Belum ada review. Bagikan pengalaman pendakian Anda!</div>';
+                return;
+            }
+            
+            container.innerHTML = reviewsData.map(review => `
+                <div class="review-card">
+                    <div class="stars">${'⭐'.repeat(review.rating)}</div>
+                    <div class="review-meta">
+                        <strong>${review.reviewerName}</strong> • ${review.mountainName} • ${new Date(review.date).toLocaleDateString('id-ID')}
+                    </div>
+                    <p><strong>Pengalaman:</strong></p>
+                    <p>${review.experience}</p>
+                    ${review.tips ? `<p><strong>Tips:</strong></p><p>${review.tips}</p>` : ''}
+                    <div style="margin-top: 15px;">
+                        <button class="btn btn-edit" onclick="editReview(${review.id})">Edit</button>
+                        <button class="btn btn-danger" onclick="confirmDeleteReview(${review.id}, '${review.mountainName}')">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateMountainSelect() {
+            const select = document.getElementById('reviewMountain');
+            select.innerHTML = '<option value="">Pilih gunung yang didaki</option>';
+            mountainsData.forEach(mountain => {
+                select.innerHTML += `<option value="${mountain.id}">${mountain.name}</option>`;
+            });
+        }
+
+        // Edit Functions
+        function editMountain(id) {
+            const mountain = mountainsData.find(m => m.id === id);
+            if (!mountain) return;
+            
+            editingMountainId = id;
+            document.getElementById('mountainName').value = mountain.name;
+            document.getElementById('location').value = mountain.location;
+            document.getElementById('difficulty').value = mountain.difficulty;
+            document.getElementById('duration').value = mountain.duration;
+            document.getElementById('cost').value = mountain.cost;
+            document.getElementById('altitude').value = mountain.altitude;
+            document.getElementById('description').value = mountain.description;
+            
+            document.getElementById('cancelEdit').style.display = 'inline-block';
+            showTab('add-mountain');
+        }
+
+        function editReview(id) {
+            const review = reviewsData.find(r => r.id === id);
+            if (!review) return;
+            
+            editingReviewId = id;
+            updateMountainSelect();
+            document.getElementById('reviewMountain').value = review.mountainId;
+            document.getElementById('reviewerName').value = review.reviewerName;
+            document.getElementById('rating').value = review.rating;
+            document.getElementById('experience').value = review.experience;
+            document.getElementById('tips').value = review.tips;
+            
+            document.getElementById('cancelReviewEdit').style.display = 'inline-block';
+            showTab('add-review');
+        }
+
+        function cancelEdit() {
+            editingMountainId = null;
+            document.getElementById('mountainForm').reset();
+            document.getElementById('cancelEdit').style.display = 'none';
+        }
+
+        function cancelReviewEdit() {
+            editingReviewId = null;
+            document.getElementById('reviewForm').reset();
+            document.getElementById('cancelReviewEdit').style.display = 'none';
+        }
+
+        // Delete confirmation
+        function confirmDeleteMountain(id, name) {
+            document.getElementById('deleteMessage').textContent = `Apakah Anda yakin ingin menghapus "${name}" dari daftar?`;
+            document.getElementById('confirmDelete').onclick = () => {
+                deleteMountain(id);
+                closeDeleteModal();
+            };
+            document.getElementById('deleteModal').style.display = 'block';
+        }
+
+        function confirmDeleteReview(id, mountainName) {
+            document.getElementById('deleteMessage').textContent = `Apakah Anda yakin ingin menghapus review untuk "${mountainName}"?`;
+            document.getElementById('confirmDelete').onclick = () => {
+                deleteReview(id);
+                closeDeleteModal();
+            };
+            document.getElementById('deleteModal').style.display = 'block';
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+        }
+
+        // Form Handlers
+        document.getElementById('mountainForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const mountainData = {
+                name: document.getElementById('mountainName').value,
+                location: document.getElementById('location').value,
+                difficulty: document.getElementById('difficulty').value,
+                duration: parseInt(document.getElementById('duration').value),
+                cost: parseInt(document.getElementById('cost').value),
+                altitude: parseInt(document.getElementById('altitude').value),
+                description: document.getElementById('description').value
+            };
+            
+            if (editingMountainId) {
+                updateMountain(editingMountainId, mountainData);
+                cancelEdit();
+                alert('Data gunung berhasil diperbarui!');
+            } else {
+                addMountain(mountainData);
+                this.reset();
+                alert('Gunung baru berhasil ditambahkan!');
+            }
+            
+            console.log('Current XML Data:', generateXML());
+        });
+
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const reviewData = {
+                mountainId: parseInt(document.getElementById('reviewMountain').value),
+                reviewerName: document.getElementById('reviewerName').value,
+                rating: parseInt(document.getElementById('rating').value),
+                experience: document.getElementById('experience').value,
+                tips: document.getElementById('tips').value
+            };
+            
+            if (editingReviewId) {
+                updateReview(editingReviewId, reviewData);
+                cancelReviewEdit();
+                alert('Review berhasil diperbarui!');
+            } else {
+                addReview(reviewData);
+                this.reset();
+                alert('Review berhasil ditambahkan!');
+            }
+            
+            console.log('Current XML Data:', generateXML());
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('deleteModal');
+            if (event.target === modal) {
+                closeDeleteModal();
+            }
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeData();
+            renderMountains();
+            renderReviews();
+            updateStats();
+            updateMountainSelect();
+            
+            // Log initial XML structure
+            console.log('Initial XML Data Structure:');
+            console.log(generateXML());
+        });
+
+        // Export XML function (for demonstration)
+        function exportXML() {
+            const xmlData = generateXML();
+            const blob = new Blob([xmlData], { type: 'application/xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'pendakian_data.xml';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Add export button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('header');
+            const exportBtn = document.createElement('button');
+            exportBtn.className = 'btn';
+            exportBtn.textContent = '📥 Export XML';
+            exportBtn.onclick = exportXML;
+            exportBtn.style.marginTop = '20px';
+            header.appendChild(exportBtn);
+        });
+    </script>
+</body>
+</html>

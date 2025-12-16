@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paket Pendakian - Summit Adventures</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #2c5530;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #2c5530;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #2c5530;
+      transition: width 0.3s ease;
+    }
+
+    .section {
+      padding: 7rem 2rem 4rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      color: #2c5530;
+      margin-bottom: 2rem;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .package-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .package-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 36px rgba(44, 85, 48, 0.2);
+    }
+
+    .package-title {
+      font-size: 1.5rem;
+      color: #2c5530;
+      margin-bottom: 0.5rem;
+    }
+
+    .package-location {
+      color: #666;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .package-info {
+      margin-bottom: 1rem;
+    }
+
+    .price-tag {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #3a7040;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 10px 20px;
+      border: none;
+      background: linear-gradient(135deg, #2c5530, #3a7040);
+      color: white;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #3a7040, #2c5530);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(44, 85, 48, 0.3);
+    }
+
+    .footer {
+      background: rgba(44, 85, 48, 0.95);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="asset/logomendaki.png" alt="Summit Adventures Logo" style="height: 60px; vertical-align: middle;">
+        <span style="margin-left: 8px;">Summit Adventures</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="home.html">Beranda</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="gunung.html">Gunung</a></li>
+        <li><a href="paket.html">Paket</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Paket Section -->
+  <section class="section" id="paket">
+    <div class="container">
+      <h2 class="section-title">Paket Pendakian Populer</h2>
+      <div class="packages-grid">
+
+        <!-- Paket 1 -->
+        <div class="package-card">
+          <h3 class="package-title">Ekspedisi Rinjani</h3>
+          <p class="package-location">Gunung Rinjani, NTB</p>
+          <p class="package-info">🕒 3 Hari 2 Malam | 🏕️ Tenda & Makan | 👨‍💼 Pemandu</p>
+          <p class="price-tag">Rp 1.200.000 / orang</p>
+          <a href="pesan.html" class="btn">Pesan Sekarang</a>
+        </div>
+
+        <!-- Paket 2 -->
+        <div class="package-card">
+          <h3 class="package-title">Sunrise Bromo</h3>
+          <p class="package-location">Gunung Bromo, Jawa Timur</p>
+          <p class="package-info">🕒 1 Hari | 🚙 Jeep Tour | 🍴 Sarapan</p>
+          <p class="price-tag">Rp 150.000 / orang</p>
+          <a href="pesan.html" class="btn">Pesan Sekarang</a>
+        </div>
+
+        <!-- Paket 3 -->
+        <div class="package-card">
+          <h3 class="package-title">Jelajah Merbabu</h3>
+          <p class="package-location">Gunung Merbabu, Jawa Tengah</p>
+          <p class="package-info">🕒 2 Hari 1 Malam | 📸 Dokumentasi | 🔥 Logistik Lengkap</p>
+          <p class="price-tag">Rp 100.000 / orang</p>
+          <a href="pesan.html" class="btn">Pesan Sekarang</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Summit Adventures. Semua hak dilindungi. Dibuat dengan ❤️ untuk para petualang Indonesia.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

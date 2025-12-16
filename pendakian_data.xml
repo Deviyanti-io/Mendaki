@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pendakian_data>
+  <gunung_list>
+    <gunung id="1">
+      <nama>Gunung Rinjani</nama>
+      <lokasi>Lombok, Nusa Tenggara Barat</lokasi>
+      <kesulitan>sulit</kesulitan>
+      <durasi>3</durasi>
+      <biaya>350000</biaya>
+      <ketinggian>3726</ketinggian>
+      <deskripsi>Gunung tertinggi kedua di Indonesia dengan pemandangan Danau Segara Anak yang menakjubkan.</deskripsi>
+    </gunung>
+    <gunung id="2">
+      <nama>Gunung Bromo</nama>
+      <lokasi>Jawa Timur</lokasi>
+      <kesulitan>mudah</kesulitan>
+      <durasi>1</durasi>
+      <biaya>150000</biaya>
+      <ketinggian>2329</ketinggian>
+      <deskripsi>Gunung berapi aktif dengan sunrise yang spektakuler di kawasan Tengger Semeru.</deskripsi>
+    </gunung>
+  </gunung_list>
+  <review_list>
+    <review id="1">
+      <gunung_id>1</gunung_id>
+      <nama_gunung>Gunung Rinjani</nama_gunung>
+      <nama_pendaki>Ahmad Surya</nama_pendaki>
+      <rating>5</rating>
+      <pengalaman>Pendakian yang sangat menantang tapi worth it banget! Pemandangan Danau Segara Anak benar-benar memukau.</pengalaman>
+      <tips>Bawa jaket tebal, suhu di puncak sangat dingin. Persiapan fisik minimal 2 bulan sebelum pendakian.</tips>
+      <tanggal>2024-12-15</tanggal>
+    </review>
+  </review_list>
+</pendakian_data>

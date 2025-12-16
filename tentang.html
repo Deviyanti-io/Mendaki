@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Summit Adventures</title>
+    <link rel="stylesheet" href="style.css"> <!-- Jika kamu menggunakan CSS eksternal -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c5530;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #2c5530;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2c5530;
+            transition: width 0.3s ease;
+        }
+
+        .features {
+            padding: 8rem 2rem 6rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #2c5530;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            color: #333;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c5530;
+        }
+
+        .footer {
+            background: rgba(44, 85, 48, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="asset/logomendaki.png" alt="Summit Adventures Logo" style="height: 60px; vertical-align: middle;">
+                <span style="margin-left: 8px;">Summit Adventures</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="home.html">Beranda</a></li>
+                <li><a href="tentang.html">Tentang</a></li>
+                <li><a href="gunung.html">Gunung</a></li>
+                <li><a href="paket.html">Paket</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="features" id="tentang">
+        <div class="container">
+            <h2 class="section-title">Tentang Kami</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3>Visi</h3>
+                    <p>Menjadi sumber informasi terpercaya dan komunitas digital terbaik bagi para pecinta alam dan pendaki gunung Indonesia.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🚀</span>
+                    <h3>Misi</h3>
+                    <p>
+                        - Menyediakan data lengkap gunung-gunung di Indonesia.<br>
+                        - Mendorong pendakian yang aman dan bertanggung jawab.<br>
+                        - Membangun jaringan antar pendaki dari seluruh Indonesia.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🧭</span>
+                    <h3>Apa Itu Summit Adventure?</h3>
+                    <p>Summit Adventure adalah platform digital yang memberikan panduan, inspirasi, dan data akurat seputar dunia pendakian di Indonesia.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">👥</span>
+                    <h3>Siapa Kami?</h3>
+                    <p>Kami adalah komunitas pendaki dan pecinta alam yang memiliki visi bersama untuk menjelajahi dan melestarikan keindahan alam Indonesia.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🌄</span>
+                    <h3>Mengapa Memilih Kami?</h3>
+                    <p>Kami menggabungkan semangat petualangan dengan teknologi untuk menghadirkan informasi akurat, visual menarik, dan pengalaman pengguna terbaik dalam menjelajahi gunung-gunung Indonesia.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📬</span>
+                    <h3>Kontak Kami</h3>
+                    <p>Hubungi kami melalui halaman <a href="index.html#kontak" style="color:#2c5530; font-weight:bold;">Kontak</a> atau email ke <strong>info@summitadventure.id</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Summit Adventures. Semua hak dilindungi. Dibuat dengan ❤️ untuk para petualang Indonesia.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
